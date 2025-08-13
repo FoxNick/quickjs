@@ -1350,7 +1350,7 @@ for (let i = 0; i < 1000_000; i++) {
   str += 'a';
 }
 const t2 = Date.now()
-console.log(t2 - t1);
+console.log(`SSS:${t2 - t1}`);
 return t2 - t1;    
 }
 

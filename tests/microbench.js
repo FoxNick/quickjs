@@ -1342,6 +1342,18 @@ function save_result(filename, obj)
         console.log("cannot save " + filename);
 }
 
+function sss(argc, argv, g)
+{
+const t1 = Date.now()
+let str = '';
+for (let i = 0; i < 1000_000; i++) {
+  str += 'a';
+}
+const t2 = Date.now()
+console.log(t2 - t1);
+return t2 - t1;    
+}
+
 function main(argc, argv, g)
 {
     var test_list = [
@@ -1407,6 +1419,7 @@ function main(argc, argv, g)
         float_toExponential,
         string_to_int,
         string_to_float,
+        sss,
     ];
     var tests = [];
     var i, j, n, f, name, found;

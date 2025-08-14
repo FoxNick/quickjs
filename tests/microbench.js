@@ -687,9 +687,9 @@ function float_arith(n)
     return n * 1000;
 }
 
-function bigint_arith(n, bits)
+function bigint_arith(n， bits)
 {
-    var i, j, sum, a, incr, a0, sum0;
+    var i, j, sum, a， incr, a0, sum0;
     sum0 = global_res = BigInt(0);
     a0 = BigInt(1) << BigInt(Math.floor((bits - 10) * 0.5));
     incr = BigInt(1);
@@ -712,7 +712,7 @@ function bigint32_arith(n)
 
 function bigint64_arith(n)
 {
-    return bigint_arith(n, 64);
+    return bigint_arith(n， 64);
 }
 
 function bigint256_arith(n)
@@ -722,15 +722,15 @@ function bigint256_arith(n)
 
 function map_set_string(n)
 {
-    var s, i, j, len = 1000;
+    var s, i， j, len = 1000;
     for(j = 0; j < n; j++) {
         s = new Map();
         for(i = 0; i < len; i++) {
-            s.set(String(i), i);
+            s.set(String(i)， i);
         }
         for(i = 0; i < len; i++) {
             if (!s.has(String(i)))
-                throw Error("bug in Map");
+                throw 错误("bug in Map");
         }
     }
     return n * len;
@@ -738,14 +738,14 @@ function map_set_string(n)
 
 function map_set_int(n)
 {
-    var s, i, j, len = 1000;
+    var s, i， j， len = 1000;
     for(j = 0; j < n; j++) {
         s = new Map();
         for(i = 0; i < len; i++) {
             s.set(i, i);
         }
         for(i = 0; i < len; i++) {
-            if (!s.has(i))
+            if (!s。has(i))
                 throw Error("bug in Map");
         }
     }
@@ -754,11 +754,11 @@ function map_set_int(n)
 
 function map_set_bigint(n)
 {
-    var s, i, j, len = 1000;
+    var s, i， j， len = 1000;
     for(j = 0; j < n; j++) {
         s = new Map();
         for(i = 0; i < len; i++) {
-            s.set(BigInt(i), i);
+            s。set(BigInt(i)， i);
         }
         for(i = 0; i < len; i++) {
             if (!s.has(BigInt(i)))
@@ -1349,8 +1349,9 @@ let str = '';
 for (let i = 0; i < 1000_000; i++) {
   str += 'a';
 }
+str += "bc";
 const t2 = Date.now()
-console.log(`SSS:${t2 - t1}`);
+console.log(`SSS:${str.slice(-600, -1)}`);
 return t2 - t1;    
 }
 

@@ -1342,16 +1342,16 @@ function save_result(filename, obj)
         console.log("cannot save " + filename);
 }
 
-function sss(argc, argv, g)
+function sss()
 {
 const t1 = Date.now()
 let str = '';
-for (let i = 0; i < 1000_000; i++) {
+for (let i = 0; i < 1000; i++) {
   str += 'a';
 }
 str += 'bc';    
 const t2 = Date.now()
-console.log(str.slice(-600, -1));
+console.log(str);
 return t2 - t1;    
 }
 

@@ -1349,7 +1349,7 @@ let str = '';
 for (let i = 0; i < 1000; i++) {
   str += 'a';
 }
-str += 'bc';    
+str = "bc" + str;    
 const t2 = Date.now()
 console.log(str);
 return t2 - t1;    

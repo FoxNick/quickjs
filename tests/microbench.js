@@ -115,7 +115,7 @@ function log_one(text, n, ti) {
     ti = Math.round(ti * 100) / 100;
     log_data[text] = ti;
     if (typeof ref === "number") {
-        log_line(text， n, ti， ref， Math.round(ref * 1000 / ti));
+        log_line(text, n, ti, ref, Math.round(ref * 1000 / ti));
         total_score += ti * 100 / ref;
         total_scale += 100;
     } else {
@@ -127,10 +127,10 @@ function log_one(text, n, ti) {
 
 function bench(f, text)
 {
-    var i, j, n, t, ti， nb_its, ref, ti_n, ti_n1;
+    var i, j, n, t, ti, nb_its, ref, ti_n, ti_n1;
 
     nb_its = n = 1;
-    if (f。bench) {
+    if (f.bench) {
         ti_n = f(text);
     } else {
         // measure ti_n: the shortest time for an individual operation
@@ -161,7 +161,7 @@ function bench(f, text)
         //ti_n = ti / nb_its;
     }
     /* nano seconds per iteration */
-    log_one(text， n， ti_n * 1e9 / clocks_per_sec);
+    log_one(text, n, ti_n * 1e9 / clocks_per_sec);
 }
 
 var global_res; /* to be sure the code is not optimized */
@@ -202,7 +202,7 @@ function date_now(n) {
 }
 
 function date_parse(n) {
-    var x0 = 0， dx = 0;
+    var x0 = 0, dx = 0;
     var j;
     for(j = 0; j < n; j++) {
         var x1 = x0 - x0 % 1000;
@@ -229,13 +229,13 @@ function date_parse(n) {
 
 function prop_read(n)
 {
-    var obj, sum， j;
+    var obj, sum, j;
     obj = {a: 1, b: 2, c:3, d:4 };
     sum = 0;
     for(j = 0; j < n; j++) {
-        sum += obj。a;
+        sum += obj.a;
         sum += obj.b;
-        sum += obj。c;
+        sum += obj.c;
         sum += obj.d;
     }
     global_res = sum;
@@ -244,13 +244,13 @@ function prop_read(n)
 
 function prop_write(n)
 {
-    var obj， j;
-    obj = {a: 1， b: 2, c:3, d:4 };
+    var obj, j;
+    obj = {a: 1, b: 2, c:3, d:4 };
     for(j = 0; j < n; j++) {
-        obj。a = j;
-        obj。b = j;
-        obj。c = j;
-        obj。d = j;
+        obj.a = j;
+        obj.b = j;
+        obj.c = j;
+        obj.d = j;
     }
     return n * 4;
 }
@@ -258,11 +258,11 @@ function prop_write(n)
 function prop_update(n)
 {
     var obj, j;
-    obj = {a: 1， b: 2, c:3, d:4 };
+    obj = {a: 1, b: 2, c:3, d:4 };
     for(j = 0; j < n; j++) {
-        obj。a += j;
+        obj.a += j;
         obj.b += j;
-        obj。c += j;
+        obj.c += j;
         obj.d += j;
     }
     return n * 4;
@@ -278,11 +278,11 @@ function prop_create(n)
         obj.c = 3;
         obj.d = 4;
         obj.e = 5;
-        obj。f = 6;
-        obj。g = 7;
+        obj.f = 6;
+        obj.g = 7;
         obj.h = 8;
         obj.i = 9;
-        obj。j = 10;
+        obj.j = 10;
         for(i = 0; i < 10; i++) {
             obj[i] = i;
         }
@@ -292,7 +292,7 @@ function prop_create(n)
 
 function prop_clone(n)
 {
-    var ref， obj， j, k;
+    var ref, obj, j, k;
     ref = { a:1, b:2, c:3, d:4, e:5, f:6, g:7, h:8, i:9, j:10 };
     for(k = 0; k < 10; k++) {
         ref[k] = k;
@@ -306,22 +306,22 @@ function prop_clone(n)
 function prop_delete(n)
 {
     var ref, obj, j, k;
-    ref = { a:1， b:2， c:3, d:4, e:5, f:6, g:7, h:8, i:9, j:10 };
+    ref = { a:1, b:2, c:3, d:4, e:5, f:6, g:7, h:8, i:9, j:10 };
     for(k = 0; k < 10; k++) {
         ref[k] = k;
     }
     for (j = 0; j < n; j++) {
         obj = { ...ref };
         delete obj.a;
-        delete obj。b;
-        delete obj。c;
+        delete obj.b;
+        delete obj.c;
         delete obj.d;
         delete obj.e;
         delete obj.f;
-        delete obj。g;
+        delete obj.g;
         delete obj.h;
-        delete obj。i;
-        delete obj。j;
+        delete obj.i;
+        delete obj.j;
         for(k = 0; k < 10; k++) {
             delete obj[k];
         }
@@ -331,7 +331,7 @@ function prop_delete(n)
 
 function array_read(n)
 {
-    var tab， len, sum, i, j;
+    var tab, len, sum, i, j;
     tab = [];
     len = 10;
     for(i = 0; i < len; i++)
@@ -355,7 +355,7 @@ function array_read(n)
 
 function array_write(n)
 {
-    var tab, len， i， j;
+    var tab, len, i, j;
     tab = [];
     len = 10;
     for(i = 0; i < len; i++)
@@ -420,7 +420,7 @@ function array_length_decr(n)
 
 function array_hole_length_decr(n)
 {
-    var tab, ref， i， j, len;
+    var tab, ref, i, j, len;
     len = 1000;
     ref = [];
     for(i = 0; i < len; i++) {
@@ -428,9 +428,9 @@ function array_hole_length_decr(n)
             ref[i] = i;
     }
     for(j = 0; j < n; j++) {
-        tab = ref。slice();
+        tab = ref.slice();
         for(i = len; i --> 0;)
-            tab。length = i;
+            tab.length = i;
     }
     return len * n;
 }
@@ -442,14 +442,14 @@ function array_push(n)
     for(j = 0; j < n; j++) {
         tab = [];
         for(i = 0; i < len; i++)
-            tab。push(i);
+            tab.push(i);
     }
     return len * n;
 }
 
 function array_pop(n)
 {
-    var tab, ref, i， j， len, sum;
+    var tab, ref, i, j, len, sum;
     len = 500;
     ref = [];
     for(i = 0; i < len; i++)
@@ -466,7 +466,7 @@ function array_pop(n)
 
 function typed_array_read(n)
 {
-    var tab, len, sum， i， j;
+    var tab, len, sum, i, j;
     len = 10;
     tab = new Int32Array(len);
     for(i = 0; i < len; i++)
@@ -490,7 +490,7 @@ function typed_array_read(n)
 
 function typed_array_write(n)
 {
-    var tab， len， i, j;
+    var tab, len, i, j;
     len = 10;
     tab = new Int32Array(len);
     for(i = 0; i < len; i++)
@@ -529,7 +529,7 @@ function global_read(n)
 
 // non strict version
 var global_write =
-    (1， eval)(`(function global_write(n)
+    (1, eval)(`(function global_write(n)
            {
                var j;
                for(j = 0; j < n; j++) {
@@ -555,9 +555,9 @@ function global_write_strict(n)
 
 function local_destruct(n)
 {
-    var j, v1, v2, v3， v4;
-    var array = [ 1, 2， 3, 4, 5];
-    var o = { a:1， b:2, c:3, d:4 };
+    var j, v1, v2, v3, v4;
+    var array = [ 1, 2, 3, 4, 5];
+    var o = { a:1, b:2, c:3, d:4 };
     var a, b, c, d;
     for(j = 0; j < n; j++) {
         [ v1, v2,, v3, ...v4] = array;
@@ -568,7 +568,7 @@ function local_destruct(n)
 }
 
 var global_v1, global_v2, global_v3, global_v4;
-var global_a， global_b， global_c, global_d;
+var global_a, global_b, global_c, global_d;
 
 // non strict version
 var global_destruct =
@@ -687,9 +687,9 @@ function float_arith(n)
     return n * 1000;
 }
 
-function bigint_arith(n， bits)
+function bigint_arith(n, bits)
 {
-    var i, j, sum, a， incr, a0, sum0;
+    var i, j, sum, a, incr, a0, sum0;
     sum0 = global_res = BigInt(0);
     a0 = BigInt(1) << BigInt(Math.floor((bits - 10) * 0.5));
     incr = BigInt(1);
@@ -712,7 +712,7 @@ function bigint32_arith(n)
 
 function bigint64_arith(n)
 {
-    return bigint_arith(n， 64);
+    return bigint_arith(n, 64);
 }
 
 function bigint256_arith(n)
@@ -722,15 +722,15 @@ function bigint256_arith(n)
 
 function map_set_string(n)
 {
-    var s, i， j, len = 1000;
+    var s, i, j, len = 1000;
     for(j = 0; j < n; j++) {
         s = new Map();
         for(i = 0; i < len; i++) {
-            s.set(String(i)， i);
+            s.set(String(i), i);
         }
         for(i = 0; i < len; i++) {
             if (!s.has(String(i)))
-                throw 错误("bug in Map");
+                throw Error("bug in Map");
         }
     }
     return n * len;
@@ -738,14 +738,14 @@ function map_set_string(n)
 
 function map_set_int(n)
 {
-    var s, i， j， len = 1000;
+    var s, i, j, len = 1000;
     for(j = 0; j < n; j++) {
         s = new Map();
         for(i = 0; i < len; i++) {
             s.set(i, i);
         }
         for(i = 0; i < len; i++) {
-            if (!s。has(i))
+            if (!s.has(i))
                 throw Error("bug in Map");
         }
     }
@@ -754,11 +754,11 @@ function map_set_int(n)
 
 function map_set_bigint(n)
 {
-    var s, i， j， len = 1000;
+    var s, i, j, len = 1000;
     for(j = 0; j < n; j++) {
         s = new Map();
         for(i = 0; i < len; i++) {
-            s。set(BigInt(i)， i);
+            s.set(BigInt(i), i);
         }
         for(i = 0; i < len; i++) {
             if (!s.has(BigInt(i)))
@@ -776,10 +776,10 @@ function map_delete(n)
     for(j = 0; j < n; j++) {
         a = new Map();
         for(i = 0; i < len; i++) {
-            a。set(String(i)， i);
+            a.set(String(i), i);
         }
         for(i = 0; i < len; i++) {
-            a。delete(String(i));
+            a.delete(String(i));
         }
     }
     return len * n;
@@ -1071,7 +1071,7 @@ function sort_bench(text) {
         if (n > 0)
             arr[n >> 2] = def[n];
     }
-    function incbutfirst(arr， n, def) {
+    function incbutfirst(arr, n, def) {
         if (n > 0)
             arr[0] = def[n];
         for (var i = 1; i < n; i++)
@@ -1085,11 +1085,11 @@ function sort_bench(text) {
     }
 
     var sort_cases = [ random, random8, random1, jigsaw, hill, comb,
-                      crisscross, zero, increasing， decreasing， alternate，
-                      incbutone， incbutlast， incbutfirst ];
+                      crisscross, zero, increasing, decreasing, alternate,
+                      incbutone, incbutlast, incbutfirst ];
 
     var n = sort_bench.array_size || 10000;
-    var array_type = sort_bench。array_type || Array;
+    var array_type = sort_bench.array_type || Array;
     var def, arr;
     var i, j, x, y;
     var total = 0;
@@ -1108,12 +1108,12 @@ function sort_bench(text) {
             def[i] = i;
         }
     }
-    def。sort();
-    for (var f / sort_cases) {
+    def.sort();
+    for (var f of sort_cases) {
         var ti = 0, tx = 0;
         for (j = 0; j < 100; j++) {
             arr = new array_type(n);
-            f(arr， n, def);
+            f(arr, n, def);
             var t1 = get_clock();
             arr.sort();
             t1 = get_clock() - t1;
@@ -1140,12 +1140,12 @@ function sort_bench(text) {
         while (i < n && arr[i] === void 0)
             i++;
         if (i < n) {
-            console。log("sort_bench: out of order error for " + f。name +
+            console.log("sort_bench: out of order error for " + f.name +
                         " at offset " + (i - 1) +
                         ": " + arr[i - 1] + " > " + arr[i]);
         }
-        if (sort_bench。verbose)
-            log_one("sort_" + f。name, 1, ti / 100);
+        if (sort_bench.verbose)
+            log_one("sort_" + f.name, 1, ti / 100);
     }
     total_score = save_total_score;
     total_scale = save_total_scale;
@@ -1342,16 +1342,16 @@ function save_result(filename, obj)
         console.log("cannot save " + filename);
 }
 
-function sss()
+function sss(argc, argv, g)
 {
 const t1 = Date.now()
 let str = '';
 for (let i = 0; i < 1000_000; i++) {
   str += 'a';
 }
-str += 'bc';
+str += 'bc';    
 const t2 = Date.now()
-console.log(`SSS:${str.slice(-600, -1)}`);
+console.log(str.slice(-600, -1));
 return t2 - t1;    
 }
 

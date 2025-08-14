@@ -115,7 +115,7 @@ function log_one(text, n, ti) {
     ti = Math.round(ti * 100) / 100;
     log_data[text] = ti;
     if (typeof ref === "number") {
-        log_line(text, n, ti, ref, Math.round(ref * 1000 / ti));
+        log_line(text， n, ti， ref， Math.round(ref * 1000 / ti));
         total_score += ti * 100 / ref;
         total_scale += 100;
     } else {
@@ -127,7 +127,7 @@ function log_one(text, n, ti) {
 
 function bench(f, text)
 {
-    var i, j, n, t, ti, nb_its, ref, ti_n, ti_n1;
+    var i, j, n, t, ti， nb_its, ref, ti_n, ti_n1;
 
     nb_its = n = 1;
     if (f。bench) {
@@ -161,7 +161,7 @@ function bench(f, text)
         //ti_n = ti / nb_its;
     }
     /* nano seconds per iteration */
-    log_one(text, n, ti_n * 1e9 / clocks_per_sec);
+    log_one(text， n， ti_n * 1e9 / clocks_per_sec);
 }
 
 var global_res; /* to be sure the code is not optimized */
@@ -202,7 +202,7 @@ function date_now(n) {
 }
 
 function date_parse(n) {
-    var x0 = 0, dx = 0;
+    var x0 = 0， dx = 0;
     var j;
     for(j = 0; j < n; j++) {
         var x1 = x0 - x0 % 1000;
@@ -233,7 +233,7 @@ function prop_read(n)
     obj = {a: 1, b: 2, c:3, d:4 };
     sum = 0;
     for(j = 0; j < n; j++) {
-        sum += obj.a;
+        sum += obj。a;
         sum += obj.b;
         sum += obj。c;
         sum += obj.d;
@@ -449,7 +449,7 @@ function array_push(n)
 
 function array_pop(n)
 {
-    var tab, ref, i, j， len, sum;
+    var tab, ref, i， j， len, sum;
     len = 500;
     ref = [];
     for(i = 0; i < len; i++)
@@ -490,7 +490,7 @@ function typed_array_read(n)
 
 function typed_array_write(n)
 {
-    var tab, len, i, j;
+    var tab， len， i, j;
     len = 10;
     tab = new Int32Array(len);
     for(i = 0; i < len; i++)
@@ -555,9 +555,9 @@ function global_write_strict(n)
 
 function local_destruct(n)
 {
-    var j, v1, v2, v3, v4;
-    var array = [ 1, 2, 3, 4, 5];
-    var o = { a:1, b:2, c:3, d:4 };
+    var j, v1, v2, v3， v4;
+    var array = [ 1, 2， 3, 4, 5];
+    var o = { a:1， b:2, c:3, d:4 };
     var a, b, c, d;
     for(j = 0; j < n; j++) {
         [ v1, v2,, v3, ...v4] = array;
@@ -568,7 +568,7 @@ function local_destruct(n)
 }
 
 var global_v1, global_v2, global_v3, global_v4;
-var global_a, global_b, global_c, global_d;
+var global_a， global_b， global_c, global_d;
 
 // non strict version
 var global_destruct =
@@ -1349,7 +1349,7 @@ let str = '';
 for (let i = 0; i < 1000_000; i++) {
   str += 'a';
 }
-str += "bc";
+str += 'bc';
 const t2 = Date.now()
 console.log(`SSS:${str.slice(-600, -1)}`);
 return t2 - t1;    
@@ -1420,7 +1420,6 @@ function main(argc, argv, g)
         float_toExponential,
         string_to_int,
         string_to_float,
-        sss,
     ];
     var tests = [];
     var i, j, n, f, name, found;
@@ -1493,6 +1492,7 @@ function main(argc, argv, g)
         log_line("total", "", total[2]);
 
     if (tests == test_list && new_ref_file)
+        sss();
         save_result(new_ref_file, log_data);
 }
 
